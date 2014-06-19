@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+      <h:head>
+	<h:outputStylesheet library="css" name="default.css" />
+	<style type="text/css">
+		.ui-icon home {
+           background-image:url(#{resources['images:search.png']});
+		}
+		
+		.botaoDashboard {
+	
+			border-width: 0;
+			background: none;
+			width: 128px;
+			height: 128px;
+			
+		}
+		
+</style>
+</h:head>
+      
+      <h:body>
+
+
+<h:form>
+	<p:panelGrid columns="4"  styleClass="centerPanelGrid">
+	    
+		<p:panelGrid columns="1" >
+			<h:commandButton  action="/teacher/schedule.xhtml?faces-redirect=true" styleClass="botaoDashboard" image="resources/images/cardeneta.png"  title="Caderneta"/>
+			<p:outputLabel styleClass="labelDashBoard" value=""/>
+		
+		</p:panelGrid>
+		<p:panelGrid columns="1" >
+			<h:commandButton styleClass="botaoDashboard" image="resources/images/cadastrar.png"  title="Cadastrar"/>
+			<p:outputLabel styleClass="labelDashBoard" value=" "/>
+		</p:panelGrid>
+		<p:panelGrid columns="1" >
+			<h:commandButton styleClass="botaoDashboard" image="resources/images/consultar.png"  title="Consultar"/>
+			<p:outputLabel styleClass="labelDashBoard" value=" "/>
+		</p:panelGrid>
+		<p:panelGrid columns="1" >
+		<h:commandButton styleClass="botaoDashboard" image="resources/images/report.png"  title="Relátorios"/>
+			<p:outputLabel styleClass="labelDashBoard" value=""/>
+			
+		</p:panelGrid>
+
+	</p:panelGrid>
+	</h:form>
+
+
+      </h:body>
+</html>
+

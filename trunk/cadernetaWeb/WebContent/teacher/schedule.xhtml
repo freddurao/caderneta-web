@@ -1,0 +1,88 @@
+<ui:composition template="/templates/layout.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui">
+     <ui:define name="content">
+
+<h:form>
+<p:fieldset legend="Caderneta">
+		<p:panel>
+			<h:commandButton  action="/index.xhtml?faces-redirect=true" styleClass="botaoDashboard" image="/resources/images/home.png"  title="Efetuar Chamada"/>
+			
+				    <p:outputLabel for="turma" value="Turma:" style="margin-left:30px" />
+			        <p:selectOneMenu id="turma" value="#" style="margin-left:30px; width:100px">
+			            <f:selectItem itemLabel="Turma 1" itemValue="" />
+			            <f:selectItem itemLabel="Turma 2" itemValue="" />
+			          
+			        </p:selectOneMenu>
+	        
+		</p:panel>
+		<p:panel styleClass="tamanho">
+				<p:schedule id="schedule" locale="pt"  value="#{testeBean.eventModel}" >
+				<p:ajax  event="eventSelect" listener="#{testeBean.onEventSelect}" oncomplete="PF('alunosDialog').show();"/>
+				</p:schedule>
+		</p:panel>
+</p:fieldset>
+
+<p:dialog  position="center"     widgetVar="alunosDialog" header="Lista de alunos" showEffect="clip" hideEffect="clip">
+
+<p:panel styleClass="tamanho">
+     <p:dataTable var="aluno" value="#{testeBean.alunos}" emptyMessage="Nenhum registro">
+			   
+			 
+			    <p:column headerText="Mátricula">
+			        <h:outputText value="#{aluno.matricula}" style="width:50px" />
+			    </p:column>
+			 
+			    <p:column headerText="Nome" style="width:500px">
+			        <h:outputText value="#{aluno.nome}" />
+	  		    </p:column>
+			 
+	  		    <p:column headerText="Presença" style="width:40px">
+			        <p:selectBooleanCheckbox value="#{aluno.presenca}" />
+			    </p:column>
+     </p:dataTable>
+   </p:panel>  
+</p:dialog>
+</h:form>
+<script type="text/javascript">
+                PrimeFaces.locales['pt'] = {  
+                    closeText: 'Fechar',  
+                    prevText: 'Anterior',  
+                    nextText: 'Próximo',  
+                    currentText: 'Começo',  
+                    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+                    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+                    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+                    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+                    dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+                    weekHeader: 'Semana',  
+                    firstDay: 1,  
+                    isRTL: false,  
+                    showMonthAfterYear: false,  
+                    yearSuffix: '',  
+                    timeOnlyTitle: 'Só Horas',  
+                    timeText: 'Tempo',  
+                    hourText: 'Hora',  
+                    minuteText: 'Minuto',  
+                    secondText: 'Segundo',  
+                    currentText: 'Data Atual',  
+                    ampm: false,  
+                    month: 'Mês',  
+                    week: 'Semana',  
+                    day: 'Dia',  
+                    allDayText : 'Todo Dia'  
+                };  
+</script>
+<style type="text/css">
+    .tamanho {
+        width: 800px;
+        margin-left:  auto !important;
+        margin-right: auto !important;
+    }
+</style>
+
+ </ui:define>
+ </ui:composition>
