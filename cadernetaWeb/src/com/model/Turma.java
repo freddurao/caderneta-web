@@ -40,6 +40,10 @@ public class Turma  implements Serializable{
 	@Column(name="codigo")
 	private String codigo;
 	
+	
+	@Column(name="descricao")
+	private String descricao;
+	
 	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idSemestre")
@@ -116,6 +120,15 @@ public class Turma  implements Serializable{
 
 	public void setAlunos(Collection<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

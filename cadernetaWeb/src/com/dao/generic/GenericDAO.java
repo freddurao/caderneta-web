@@ -12,7 +12,7 @@ public abstract class GenericDAO<T> implements Serializable {
 
 	private static final EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("CardenetaWebDS");
-	private EntityManager em;
+	protected EntityManager em;
 
 	private Class<T> entityClass;
 
