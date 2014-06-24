@@ -1,7 +1,7 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,9 +31,10 @@ public class Aula implements Serializable {
     private Integer id;
 
 	@Column(name="dataHoraInicio")
-	private Date dataHoraInicio;
+	private Calendar dataHoraInicio;
+	
 	@Column(name="dataHoraFim")
-	private Date dataHoraFim;
+	private Calendar dataHoraFim;
 	
 	@NotNull
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -54,23 +55,23 @@ public class Aula implements Serializable {
 	}
 
 
-	public Date getDataHoraInicio() {
+	
+	
+
+	public Calendar getDataHoraInicio() {
 		return dataHoraInicio;
 	}
 
-	public void setDataHoraInicio(Date dataHoraInicio) {
+	public void setDataHoraInicio(Calendar dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;
 	}
 
-
-
-	public Date getDataHoraFim() {
+	public Calendar getDataHoraFim() {
 		return dataHoraFim;
 	}
 
-	public void setDataHoraFim(Date dataHoraFim) {
+	public void setDataHoraFim(Calendar dataHoraFim) {
 		this.dataHoraFim = dataHoraFim;
-
 	}
 
 	public Turma getTurma() {

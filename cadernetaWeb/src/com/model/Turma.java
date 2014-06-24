@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.sun.istack.internal.NotNull;
 
@@ -48,11 +50,13 @@ public class Turma  implements Serializable{
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idProfessor")
 	private Professor professor;
-	
+
 	@Column(name="inicioDeVigencia")
+	@Temporal(TemporalType.DATE)
 	private Date inicioDeVigencia;
 	
 	@Column(name="fimDeVigencia")
+	@Temporal(TemporalType.DATE)
 	private Date fimDeVigencia;
 	
 	@ManyToMany(mappedBy = "turmas")
