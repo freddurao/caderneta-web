@@ -36,6 +36,21 @@ public class Disciplina implements Serializable{
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idDepartamento")
 	private Departamento departamento;
+	
+	@NotNull
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idCargaHoraria")
+	private CargaHoraria cargaHoraria;
+	
+	
+
+	public CargaHoraria getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(CargaHoraria cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
 
 	public Integer getId() {
 		return id;

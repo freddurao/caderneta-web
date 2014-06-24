@@ -8,12 +8,12 @@
  
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://67.205.81.4:5432/cardeneta" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://67.205.81.4:5432/caderneta" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="sz5g@LT2bgt" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.connection.shutdown" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="false"/>
         </properties>

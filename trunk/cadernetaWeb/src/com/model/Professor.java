@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "Professor")
@@ -30,7 +35,9 @@ public class Professor implements Serializable {
 	@Column(name="siap", unique=true)
 	private String siap;
 	
-	@Column(name="idDepartamento")
+	@NotNull
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idDepartamento")
 	private Departamento departamento;
 
 	@Column(name="senha")
