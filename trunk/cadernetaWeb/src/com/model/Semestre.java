@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Semestre")
@@ -23,6 +26,14 @@ public class Semestre implements Serializable{
 	@Column(name = "idSemestre")
     private Integer id;
 	
+	
+	@Column(name="dataInicio")
+	@Temporal(TemporalType.DATE)
+	private Calendar dataInicio;
+	
+	@Column(name="dataFim")
+	@Temporal(TemporalType.DATE)
+	private Calendar dataFim;
 	
 	@Column(name="descricao")
 	private String descricao;
@@ -75,6 +86,22 @@ public class Semestre implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Calendar getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Calendar dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Calendar getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Calendar dataFim) {
+		this.dataFim = dataFim;
 	}
 	
 	

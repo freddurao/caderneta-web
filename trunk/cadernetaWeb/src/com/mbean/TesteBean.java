@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
@@ -30,6 +32,12 @@ public class TesteBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 895445293216959017L;
+	
+	private List<String> dias;
+	
+	private Date horaInicial;
+	
+	private Date horaFinal;
 
 	@PostConstruct
 	public void init(){
@@ -54,6 +62,45 @@ public class TesteBean implements Serializable {
 	
 	
 	
+	@SuppressWarnings("deprecation")
+	public void agendar(ActionEvent e){
+
+		
+		//Temporario
+		Calendar horaAula = new GregorianCalendar();
+		Calendar fimSemestre = new GregorianCalendar();
+		Integer cargaHoraria = 4080;// 68 h em min
+		
+		 int valorDeTeste = 120;// selecionado no cambo de horas adicionas 2 horas
+		 
+       
+		fimSemestre.set(Calendar.DAY_OF_MONTH, 15);  
+		fimSemestre.set(Calendar.MONTH, 11); // Mes começa em 0 e vai até 11   
+		fimSemestre.set(Calendar.YEAR, 2014);  
+		horaAula.set(Calendar.HOUR_OF_DAY, horaInicial.getHours());
+		horaAula.set(Calendar.MINUTE, horaInicial.getMinutes());
+		horaAula.set(Calendar.SECOND, 00);
+        System.out.println(" data " + horaAula.getTime());  
+        System.out.println(" data fim " + fimSemestre.getTime());  
+        
+        
+        while (horaAula.getTime().before(fimSemestre.getTime())){  
+      	  Integer  dia = horaAula.get(Calendar.DAY_OF_WEEK);
+            if(dias.contains(dia.toString()) && valorDeTeste<=4080){
+          	      
+		        	  System.out.println(" Data " + horaAula.getTime()+ " Carga "+valorDeTeste); 
+		        	  valorDeTeste += 120;
+		             
+            }
+            
+            horaAula.set(Calendar.DAY_OF_MONTH, horaAula.get(Calendar.DAY_OF_MONTH) +1 );
+      }  
+        
+        
+        
+        
+	}
+	
 	public void onEventSelect(SelectEvent selectEvent) {
      
     }
@@ -66,7 +113,7 @@ public class TesteBean implements Serializable {
 	        t.set(Calendar.HOUR, 8);
 	         
 	        return t.getTime();
-	    }
+	  }
 
 	  private Date previousDay11Pm() {
 	        Calendar t = (Calendar) today().clone();
@@ -100,6 +147,30 @@ public class TesteBean implements Serializable {
 
 	public void setEventModel(ScheduleModel eventModel) {
 		this.eventModel = eventModel;
+	}
+
+	public List<String> getDias() {
+		return dias;
+	}
+
+	public void setDias(List<String> dias) {
+		this.dias = dias;
+	}
+
+	public Date getHoraInicial() {
+		return horaInicial;
+	}
+
+	public void setHoraInicial(Date horaInicial) {
+		this.horaInicial = horaInicial;
+	}
+
+	public Date getHoraFinal() {
+		return horaFinal;
+	}
+
+	public void setHoraFinal(Date horaFinal) {
+		this.horaFinal = horaFinal;
 	}
 	
 }
