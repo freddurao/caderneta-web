@@ -12,6 +12,7 @@
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="sz5g@LT2bgt" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
             <property name="hibernate.connection.shutdown" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />

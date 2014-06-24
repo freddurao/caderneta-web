@@ -8,13 +8,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.facade.AulaFacade;
+import com.facade.TurmaFacade;
 import com.model.Aula;
 
 public class Teste {
 	
 	
 	public static void main(String[] args) {
-		AulaFacade aulaface= new AulaFacade();
+		TurmaFacade turmas = new TurmaFacade();
+		System.out.println(turmas.getTurmas().size());
 	   List<String> dias  = new ArrayList<String>();
 	   dias.add("2");
 	   dias.add("4");
