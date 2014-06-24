@@ -27,6 +27,9 @@ public class CargaHoraria implements Serializable {
 	@Column(name="quantidade")
 	private Integer quantidade;
 	
+	@Column(name="descricao")
+	private String descricao;
+	
 	
 	
 
@@ -45,6 +48,17 @@ public class CargaHoraria implements Serializable {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -77,8 +91,8 @@ public class CargaHoraria implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
+
 	
 	
 	

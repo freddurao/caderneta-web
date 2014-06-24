@@ -27,7 +27,7 @@ public class Caderneta implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCardeneta")
+	@Column(name = "idCaderneta")
     private Integer id;
 	
 	

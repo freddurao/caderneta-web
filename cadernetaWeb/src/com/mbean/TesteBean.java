@@ -17,7 +17,9 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleModel;
 
+import com.facade.AulaFacade;
 import com.model.Aluno;
+import com.model.Aula;
 
 
 @ViewScoped
@@ -41,7 +43,8 @@ public class TesteBean implements Serializable {
 
 	@PostConstruct
 	public void init(){
-		
+
+		//aulaface.save(new Aula());
 		  eventModel = new DefaultScheduleModel();
 	      eventModel.addEvent(new DefaultScheduleEvent(" Aula ", previousDay8Pm(), previousDay11Pm()));
 		  alunos = new ArrayList<Aluno>();

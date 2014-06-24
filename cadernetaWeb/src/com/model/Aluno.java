@@ -6,14 +6,18 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.sun.istack.internal.NotNull;
 
 @Entity
 @Table(name = "Aluno")
@@ -43,6 +47,10 @@ public class Aluno implements Serializable {
                inverseJoinColumns= @JoinColumn(name = "idTurma") )
 	private List<Turma> turmas;
 	
+	@NotNull
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idDepartamento")
+	private Departamento departamento;
 	
 	@Transient
 	private boolean presenca;
@@ -77,6 +85,15 @@ public class Aluno implements Serializable {
 
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
+	}
+
+	
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 
 	@Override

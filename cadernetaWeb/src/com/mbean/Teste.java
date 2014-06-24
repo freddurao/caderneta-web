@@ -7,12 +7,14 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import com.facade.AulaFacade;
 import com.model.Aula;
 
 public class Teste {
 	
 	
 	public static void main(String[] args) {
+		AulaFacade aulaface= new AulaFacade();
 	   List<String> dias  = new ArrayList<String>();
 	   dias.add("2");
 	   dias.add("4");
