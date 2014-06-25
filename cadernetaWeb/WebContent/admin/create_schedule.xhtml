@@ -13,35 +13,37 @@
 					<p:outputLabel for="turma" value="Turma:" style="margin-left:30px" />
 			        <p:selectOneMenu id="turma" value="#{agendaMBean.turma}" style="margin-left:30px; width:100px" converter="entityConverter">
 			              <f:selectItem itemLabel="Selecione" itemValue="" />  
-                          <f:selectItems value="#{agendaMBean.turmas}" var="turma" itemLabel="#{turma.descricao}" itemValue="#{turma}" >
+                          <f:selectItems value="#{agendaMBean.turmas}" var="turma" itemLabel="#{turma.descricao}" itemValue="#{turma}" />
 			          
 			        </p:selectOneMenu>
 			      
 			      
 			    <p:outputLabel for="horaInicial" value="Horário Inicial:" />
-                <p:calendar id="horaInicial" value="#{testeBean.horaInicial}" pattern="HH:mm a" timeOnly="true"  /> 
+                <p:calendar id="horaInicial" value="#{agendaMBean.horario}" pattern="HH:mm a" timeOnly="true"  /> 
                 
                 <p:outputLabel  value="Duração:" />
-                <p:selectOneMenu value="#" style="margin-left:30px">
+                <p:selectOneMenu value="#{agendaMBean.duracaoAula}" style="margin-left:30px">
 		            <f:selectItem itemLabel="30 min" itemValue="30" />
-		            <f:selectItem itemLabel="1 h" itemValue="60" />
+		            <f:selectItem itemLabel="1 hora" itemValue="60" />
+		             <f:selectItem itemLabel="2 horas" itemValue="120" />
+		            
 		            
 		        </p:selectOneMenu>  
 			    <h:outputText value="Dias "  style="margin-left:30px" /> 
-		        <p:selectManyButton value="#{testeBean.dias}" style="margin-left:30px">
-		            <f:selectItem itemLabel="Dom" itemValue="0" />
-		            <f:selectItem itemLabel="Seg" itemValue="1" />
-		            <f:selectItem itemLabel="Ter" itemValue="2" />
-		            <f:selectItem itemLabel="Qua" itemValue="3" />
-		            <f:selectItem itemLabel="Qui" itemValue="4" />
-		            <f:selectItem itemLabel="Sex" itemValue="5" />
-		            <f:selectItem itemLabel="Sab" itemValue="6" />
+		        <p:selectManyButton value="#{agendaMBean.dias}" style="margin-left:30px">
+		            <f:selectItem itemLabel="Dom" itemValue="1" />
+		            <f:selectItem itemLabel="Seg" itemValue="2" />
+		            <f:selectItem itemLabel="Ter" itemValue="3" />
+		            <f:selectItem itemLabel="Qua" itemValue="4" />
+		            <f:selectItem itemLabel="Qui" itemValue="5" />
+		            <f:selectItem itemLabel="Sex" itemValue="6" />
+		            <f:selectItem itemLabel="Sab" itemValue="7" />
 		        </p:selectManyButton>
 		        
 		        
-			    <h:outputText value="Carga Horaria "  style="margin-left:30px" /> 
+	
 		        
-				<p:commandButton value="Agendar" actionListener="#{testeBean.agendar}"></p:commandButton>
+				<p:commandButton value="Agendar" actionListener="#{agendaMBean.agendar}"></p:commandButton>
 				</p:panelGrid>
 			
 			</p:panel>
