@@ -20,6 +20,7 @@ public class Teste {
 	   List<String> dias  = new ArrayList<String>();
 	   dias.add("2");
 	   dias.add("4");
+	   
 	   int valorDeTeste = 120;
 	  
 		Calendar data = new GregorianCalendar();

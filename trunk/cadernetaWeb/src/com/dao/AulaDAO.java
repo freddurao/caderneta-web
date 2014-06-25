@@ -16,7 +16,9 @@ public class AulaDAO extends GenericDAO<Aula>  {
 	 @Override
 	public void save(Aula entity) {
 		// TODO Auto-generated method stub
+		beginTransaction();
 		super.save(entity);
+		commitAndCloseTransaction();
 	}
   
 }

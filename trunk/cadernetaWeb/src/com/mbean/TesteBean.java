@@ -88,7 +88,7 @@ public class TesteBean implements Serializable {
         
         
         while (horaAula.getTime().before(fimSemestre.getTime())){  
-      	  Integer  dia = horaAula.get(Calendar.DAY_OF_WEEK);
+      	    Integer  dia = horaAula.get(Calendar.DAY_OF_WEEK);
             if(dias.contains(dia.toString()) && valorDeTeste<=4080){
           	      
 		        	  System.out.println(" Data " + horaAula.getTime()+ " Carga "+valorDeTeste); 

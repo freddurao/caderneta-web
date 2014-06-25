@@ -54,6 +54,11 @@ public class Turma  implements Serializable{
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idProfessor")
 	private Professor professor;
+	
+	@NotNull
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idDisciplina")
+	private Disciplina disciplina;
 
 	@Column(name="inicioDeVigencia")
 	@Temporal(TemporalType.DATE)
@@ -65,6 +70,16 @@ public class Turma  implements Serializable{
 	
 	@ManyToMany(mappedBy = "turmas")
 	private Collection<Aluno> alunos;
+
+	
+	
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
 
 	public Integer getId() {
 		return id;
