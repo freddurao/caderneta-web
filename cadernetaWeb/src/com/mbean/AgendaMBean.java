@@ -13,9 +13,14 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.model.DefaultScheduleEvent;
+import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleModel;
+
 import com.facade.AulaFacade;
 import com.facade.SemestreFacade;
 import com.facade.TurmaFacade;
+import com.model.Aluno;
 import com.model.Aula;
 import com.model.Professor;
 import com.model.Semestre;
@@ -43,6 +48,13 @@ public class AgendaMBean implements Serializable {
 	
 	private Turma turma;
 	private Semestre semestre;
+	
+    private List<Aluno> alunos;
+    
+    private List<Aula> aulas;
+	
+
+    private ScheduleModel eventModel;
 	
 	private List<String> dias;
 	private Date horario;
@@ -75,6 +87,16 @@ public class AgendaMBean implements Serializable {
 			turmas = turmaFacade.findTurmaByProfessor(professor);
 		}
 		
+		eventModel = new DefaultScheduleModel();
+		Turma t  =new Turma() ;
+		t.setId(1);
+		aulas = aulaFacade.findAulaByTurma(t);
+		if(aulas!=null && aulas.size()>0){
+			for (Aula a : aulas) {
+				eventModel.addEvent(new DefaultScheduleEvent(a.getTurma().getDisciplina().getDescricao(), a.getDataHoraInicio().getTime(), a.getDataHoraFim().getTime()));
+		    }
+		
+		}
 	}
 
 	
@@ -179,6 +201,30 @@ public class AgendaMBean implements Serializable {
      public FacesContext getFacesContext() {  
         return FacesContext.getCurrentInstance();  
     }
+
+	public ScheduleModel getEventModel() {
+		return eventModel;
+	}
+
+	public void setEventModel(ScheduleModel eventModel) {
+		this.eventModel = eventModel;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public Semestre getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
 
 	
 	
