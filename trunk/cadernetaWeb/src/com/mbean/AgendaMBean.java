@@ -17,6 +17,7 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleModel;
 
+import com.facade.AlunoFacade;
 import com.facade.AulaFacade;
 import com.facade.SemestreFacade;
 import com.facade.TurmaFacade;
@@ -61,6 +62,8 @@ public class AgendaMBean implements Serializable {
 	
 	private Integer duracaoAula;
 	
+	private AlunoFacade alunoFacade;
+	
 	public AgendaMBean(){
 		if(turmaFacade==null){
 			turmaFacade = new TurmaFacade();
@@ -74,7 +77,10 @@ public class AgendaMBean implements Serializable {
 		if(aulaFacade==null){
 			aulaFacade = new AulaFacade();
 		}
+		if(alunoFacade==null){
+			alunoFacade = new AlunoFacade();
 		
+		}
 	}
 	
 	@PostConstruct
@@ -96,7 +102,9 @@ public class AgendaMBean implements Serializable {
 				eventModel.addEvent(new DefaultScheduleEvent(a.getTurma().getDisciplina().getDescricao(), a.getDataHoraInicio().getTime(), a.getDataHoraFim().getTime()));
 		    }
 		
+			
 		}
+		alunos = alunoFacade.findAlunoByTurma(t);
 	}
 
 	
