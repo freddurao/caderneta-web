@@ -6,7 +6,7 @@
      xmlns:p="http://primefaces.org/ui">
      <ui:define name="content">
 
-<h:form>
+<h:form id="formAgenda">
 <p:fieldset legend="Caderneta">
 		<p:panel>
 			<h:commandButton  action="/teacher/index.xhtml?faces-redirect=true" styleClass="botaoDashboard" image="/resources/images/home.png"  title="Efetuar Chamada"/>
@@ -21,7 +21,7 @@
 		</p:panel>
 		<p:panel styleClass="tamanho">
 				<p:schedule id="schedule" locale="pt"  value="#{agendaMBean.eventModel}" >
-				<p:ajax  event="eventSelect" listener="#{testeBean.onEventSelect}" oncomplete="PF('alunosDialog').show();"/>
+				<p:ajax update=":formAgenda:dtAluno" event="eventSelect" listener="#{agendaMBean.onEventSelect}" oncomplete="PF('alunosDialog').show();"/>
 				</p:schedule>
 		</p:panel>
 </p:fieldset>
@@ -29,22 +29,26 @@
 <p:dialog  position="center"     widgetVar="alunosDialog" header="Lista de alunos" showEffect="clip" hideEffect="clip">
 
 <p:panel styleClass="tamanho">
-     <p:dataTable var="aluno" value="#{agendaMBean.alunos}" emptyMessage="Nenhum registro">
+     <p:dataTable  id="dtAluno" var="aluno" value="#{agendaMBean.alunos}" emptyMessage="Nenhum registro">
 			   
-			 
+			   
+			    <p:column headerText="Departamento" style="width:100px">
+			        <h:outputText value="#{aluno.departamento.descricao}" style="width:50px" />
+			    </p:column>
 			    <p:column headerText="Mátricula">
-			        <h:outputText value="#{aluno.matricula}" style="width:50px" />
+			        <h:outputText value="#{aluno.matricula}" style="width:70px" />
 			    </p:column>
 			 
-			    <p:column headerText="Nome" style="width:500px">
+			    <p:column headerText="Nome" style="width:450px">
 			        <h:outputText value="#{aluno.nome}" />
 	  		    </p:column>
 			 
-	  		    <p:column headerText="Presença" style="width:40px">
+	  		    <p:column headerText="Presença" style="width:60px">
 			        <p:selectBooleanCheckbox value="#{aluno.presenca}" />
 			    </p:column>
      </p:dataTable>
    </p:panel>  
+   <p:commandButton value="Finalizar" actionListener="#{agendaMBean.finalizarChamada}" ></p:commandButton>
 </p:dialog>
 </h:form>
 <script type="text/javascript">
