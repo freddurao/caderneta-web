@@ -13,8 +13,10 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import com.facade.AlunoFacade;
@@ -23,6 +25,7 @@ import com.facade.SemestreFacade;
 import com.facade.TurmaFacade;
 import com.model.Aluno;
 import com.model.Aula;
+import com.model.Caderneta;
 import com.model.Professor;
 import com.model.Semestre;
 import com.model.Status;
@@ -53,9 +56,12 @@ public class AgendaMBean implements Serializable {
     private List<Aluno> alunos;
     
     private List<Aula> aulas;
+    
+    private Aula aula;
 	
 
     private ScheduleModel eventModel;
+    private ScheduleEvent event = new DefaultScheduleEvent();
 	
 	private List<String> dias;
 	private Date horario;
@@ -99,14 +105,33 @@ public class AgendaMBean implements Serializable {
 		aulas = aulaFacade.findAulaByTurma(t);
 		if(aulas!=null && aulas.size()>0){
 			for (Aula a : aulas) {
-				eventModel.addEvent(new DefaultScheduleEvent(a.getTurma().getDisciplina().getDescricao(), a.getDataHoraInicio().getTime(), a.getDataHoraFim().getTime()));
+				eventModel.addEvent(new DefaultScheduleEvent(a.getTurma().getDisciplina().getDescricao(), a.getDataHoraInicio().getTime(), a.getDataHoraFim().getTime(),a));
 		    }
 		
 			
 		}
-		alunos = alunoFacade.findAlunoByTurma(t);
+		
 	}
 
+	public void finalizarChamada(ActionEvent e){
+		
+		for (Aluno aluno : alunos) {
+			
+			Caderneta caderneta = new Caderneta();
+			caderneta.setAluno(aluno);
+			caderneta.setAula(aula);
+			caderneta.setPresenca(aluno.isPresenca());
+			
+		}
+	}
+	
+	public void onEventSelect(SelectEvent selectEvent) {
+		Turma t  =new Turma() ;
+		t.setId(1);
+		event = (ScheduleEvent) selectEvent.getObject();
+		aula = (Aula) event.getData();
+		alunos = alunoFacade.findAlunoByTurma(t);
+    }
 	
 	@SuppressWarnings("deprecation")
 	public void agendar(ActionEvent e){
@@ -232,6 +257,14 @@ public class AgendaMBean implements Serializable {
 
 	public void setSemestre(Semestre semestre) {
 		this.semestre = semestre;
+	}
+
+	public Aula getAula() {
+		return aula;
+	}
+
+	public void setAula(Aula aula) {
+		this.aula = aula;
 	}
 
 	
