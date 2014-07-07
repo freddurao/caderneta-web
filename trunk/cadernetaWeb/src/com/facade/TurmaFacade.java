@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.dao.TurmaDAO;
+import com.model.Professor;
 import com.model.Turma;
 
 public class TurmaFacade implements Serializable{
@@ -27,5 +28,9 @@ public class TurmaFacade implements Serializable{
     
      public List<Turma> getTurmas(){
     	 return turmaDAO.getTurmas();
+     }
+     
+     public  List<Turma>  findTurmaByProfessor(Professor professor){
+    	 return turmaDAO.findTurmaByProfessor(professor);
      }
 }

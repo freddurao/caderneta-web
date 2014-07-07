@@ -37,12 +37,12 @@ public class Aula implements Serializable {
 	private Calendar dataHoraFim;
 	
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idTurma")
     private Turma turma;
 	
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idStatus")
 	private Status status;
 	

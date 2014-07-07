@@ -8,12 +8,16 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.facade.AulaFacade;
 import com.facade.SemestreFacade;
 import com.facade.TurmaFacade;
 import com.model.Aula;
+import com.model.Professor;
 import com.model.Semestre;
 import com.model.Status;
 import com.model.Turma;
@@ -63,9 +67,12 @@ public class AgendaMBean implements Serializable {
 	
 	@PostConstruct
 	public void init(){
-		
-		if(turmas==null){
-			turmas = turmaFacade.getTurmas();
+		HttpSession session = (HttpSession) getFacesContext().getExternalContext().getSession(false);
+         
+	    Professor professor =  (Professor) session.getAttribute("professorSession");
+
+		if(turmas==null&& professor!=null){
+			turmas = turmaFacade.findTurmaByProfessor(professor);
 		}
 		
 	}
@@ -163,6 +170,15 @@ public class AgendaMBean implements Serializable {
 	public void setDuracaoAula(Integer duracaoAula) {
 		this.duracaoAula = duracaoAula;
 	}
+	
+
+	public HttpServletRequest getRequestSession() {  
+        return (HttpServletRequest) getFacesContext().getExternalContext().getRequest();  
+    }
+    
+     public FacesContext getFacesContext() {  
+        return FacesContext.getCurrentInstance();  
+    }
 
 	
 	
