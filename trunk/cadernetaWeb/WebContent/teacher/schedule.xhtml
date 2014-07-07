@@ -20,7 +20,7 @@
 	        
 		</p:panel>
 		<p:panel styleClass="tamanho">
-				<p:schedule id="schedule" locale="pt"  value="#{testeBean.eventModel}" >
+				<p:schedule id="schedule" locale="pt"  value="#{agendaMBean.eventModel}" >
 				<p:ajax  event="eventSelect" listener="#{testeBean.onEventSelect}" oncomplete="PF('alunosDialog').show();"/>
 				</p:schedule>
 		</p:panel>
