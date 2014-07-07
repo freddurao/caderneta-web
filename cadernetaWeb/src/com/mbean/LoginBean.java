@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.facade.ProfessorFacade;
 import com.model.Professor;
 
 @ManagedBean(name="loginBean")
@@ -45,8 +49,13 @@ public class LoginBean implements Serializable {
 			Professor professor = new Professor();
 			professor.setSiap(login);
 			professor.setSenha(senha);
-			
+			ProfessorFacade professorFacade = new ProfessorFacade();
+			professor = professorFacade.login(professor);
 			if(professor!=null && professor.getId()!=null){
+
+	            HttpSession session = (HttpSession) getFacesContext().getExternalContext().getSession(false);
+	            
+	            session.setAttribute("professorSession",  professor);
 				loggedIn = true;
 				retorno = "/teacher/index.xhtml?faces-redirect=true";
 			}else{
@@ -66,5 +75,14 @@ public class LoginBean implements Serializable {
 		loggedIn = false;
 		return "/login.xhtml?faces-redirect=true";
 	}
+	
+
+    public HttpServletRequest getRequestSession() {  
+        return (HttpServletRequest) getFacesContext().getExternalContext().getRequest();  
+    }
+    
+     public FacesContext getFacesContext() {  
+        return FacesContext.getCurrentInstance();  
+    }
 	
 }

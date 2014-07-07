@@ -26,7 +26,7 @@ public class ProfessorDAO extends GenericDAO<Professor>  {
 	    
 	    StringBuilder sb = new StringBuilder();
 	    
-	    sb.append("select p from professor p where.siap :=siap and p.senha :=senha ");
+	    sb.append("SELECT p FROM Professor p WHERE  p.siap = :siap and p.senha = :senha ");
 	    
 		Professor result =  super.findOneResult(sb.toString(), parameters);
 		closeTransaction();

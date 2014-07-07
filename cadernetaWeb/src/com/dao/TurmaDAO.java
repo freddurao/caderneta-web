@@ -2,12 +2,10 @@ package com.dao;
 
 import java.util.List;
 
-
-
-
 import javax.persistence.Query;
 
 import com.dao.generic.GenericDAO;
+import com.model.Professor;
 import com.model.Turma;
 
 public class TurmaDAO extends GenericDAO<Turma>{
@@ -36,6 +34,25 @@ public class TurmaDAO extends GenericDAO<Turma>{
 		closeTransaction();
 		return turmas;
 	}
+	
+	public  List<Turma>  findTurmaByProfessor(Professor professor){
+		List<Turma> turmas = null;
+		
+		beginTransaction();
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select t from Turma t ")
+		.append("where t.fimDeVigencia is null and t.professor =:professor");
+		
+		Query query = super.em.createQuery(sql.toString());
+		
+		query.setParameter("professor", professor);
+		turmas = (List<Turma>)query.getResultList();
+		
+		closeTransaction();
+		return turmas;
+	}
+	
+	
 	
 
 }

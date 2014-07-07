@@ -90,7 +90,7 @@ public abstract class GenericDAO<T> implements Serializable {
 		T result = null;
 
 		try {
-			Query query = em.createNamedQuery(namedQuery);
+			Query query = em.createQuery(namedQuery);
 
 			// Method that will populate parameters if they are passed not null
 			// and empty

@@ -9,13 +9,13 @@
 <h:form>
 <p:fieldset legend="Caderneta">
 		<p:panel>
-			<h:commandButton  action="/index.xhtml?faces-redirect=true" styleClass="botaoDashboard" image="/resources/images/home.png"  title="Efetuar Chamada"/>
+			<h:commandButton  action="/teacher/index.xhtml?faces-redirect=true" styleClass="botaoDashboard" image="/resources/images/home.png"  title="Efetuar Chamada"/>
 			
 				    <p:outputLabel for="turma" value="Turma:" style="margin-left:30px" />
-			        <p:selectOneMenu id="turma" value="#" style="margin-left:30px; width:100px">
-			            <f:selectItem itemLabel="Turma 1" itemValue="" />
-			            <f:selectItem itemLabel="Turma 2" itemValue="" />
-			          
+			        <p:selectOneMenu id="turma" value="#{agendaMBean.turma}" style="margin-left:30px; width:100px" converter="entityConverter">
+			             <f:selectItem itemLabel="Selecione" itemValue="" />  
+                         <f:selectItems value="#{agendaMBean.turmas}" var="turma" itemLabel="#{turma.descricao}" itemValue="#{turma}" />  
+			        
 			        </p:selectOneMenu>
 	        
 		</p:panel>
