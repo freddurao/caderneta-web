@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="Relatorio/css/index.css"/>
+       
+
+    </h:head>
+    <h:body>
+        <h:form id="formAluno">
+           
+            <br/>
+            <fieldset >
+                <header>
+                    <div id="cabecalho">
+                        <div id="texto" border="1">
+                            <p>#{cadernetaBean.universidade}</p>
+                            <p>R00232 - Registro de Presença</p>
+                            <p>#{cadernetaBean.departamento}</p>
+                            <p>Disciplina: #{cadernetaBean.textoDisciplina} &nbsp;Período Letivo:#{cadernetaBean.periodoLetivo}&nbsp; Turma:#{cadernetaBean.turma} &nbsp; Carga Horária:#{cadernetaBean.cargaHoraria} </p>
+                        </div>
+                    </div>
+                </header>
+
+            </fieldset>
+            <div align="center">Registro de Presença por Data e Hora</div>
+            <hr/>
+            <section id="tabela_aula">
+                <table border ="1"  >
+                    <tr>
+                        <th style="width: 430px">NºAula</th>
+
+                        <ui:repeat id="naula" value="#{cadernetaBean.novaChamada.presenca}" var="a">
+                            <th style="width: 19px" > #{a.dia+1} </th>
+
+                        </ui:repeat>
+                    </tr>
+                    <tr>
+                        <th borde="none">Mês </th>
+                        <ui:repeat id="nmes" value="#{cadernetaBean.novaChamada.presenca}" var="a">
+                            <th>  </th>
+
+                        </ui:repeat>
+
+                    </tr>
+
+                    <tr>
+                        <th>Dia </th>
+                        <ui:repeat id="ndia" value="#{cadernetaBean.novaChamada.presenca}" var="a">
+                            <th>  </th>
+
+                        </ui:repeat>
+
+                    </tr>
+                </table>
+            </section>
+            <section id="tabela_frequencia">
+                <table border="1" >
+                    <tr id="sem_esq">
+                        <th>Matrícula</th>
+                        <th id="nome">Nome</th>
+                        <th> </th>
+                    </tr>
+                    <ui:repeat id="al" value="#{cadernetaBean.classe.chamadas}" var="item">
+
+                        <tr>
+                            <td>#{item.aluno.matricula}</td>
+                            <td>#{item.aluno.nome}</td>
+                            <td>#{item.aluno.codDisciplina}</td>
+
+                            <ui:repeat id="presen" value="#{item.presenca}" var="p">
+                                <th><h:selectBooleanCheckbox value="#{p.presenca}" /></th>
+                            </ui:repeat>
+
+                        </tr>
+                    </ui:repeat>
+
+
+                </table>
+            </section>
+
+
+
+
+
+        </h:form>
+    </h:body>
+</html>
+
