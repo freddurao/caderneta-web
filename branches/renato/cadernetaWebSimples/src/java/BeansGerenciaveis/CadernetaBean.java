@@ -7,13 +7,10 @@ package BeansGerenciaveis;
 
 import Modelo.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
+
 
 /**
  *
@@ -31,16 +28,50 @@ public class CadernetaBean implements Serializable {
          System.out.println("Carga/3 : "+cargaHoraria/3);
          this.novaChamada = new Chamada(35);
         
-        this.novoAluno = new Aluno("1231", "Jorge", 51);
+         this.novaChamada.setAluno(new Aluno("55554", "Caio Barros Santos", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("12314", "Douglas Castro Barros", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("56456", "Maria Fernandes Azevedo", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("12314", "Martim Cavalcanti Santos", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         this.novaChamada.setAluno(new Aluno("45648", "Kauê Ferreira Cavalcanti", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("11111", "Renan Castro Cardosos", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("22222", "Tiago Almeida Dias", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
+         this.novaChamada.setAluno(new Aluno("12314", "Vitoria Cardoso Fernandes", 51));
+         this.classe.getChamadas().add(novaChamada);
+         novaChamada = new Chamada(35);
+         
         
-        this.novaChamada.setAluno(novoAluno);
+         
+         
+        
+       
         
         
-        this.classe.getChamadas().add(novaChamada);
-        novaChamada = new Chamada(35);
+        
+        
+        
         this.novoAluno = new Aluno();
         
-        //this.createDynamicColumns();
+
     }
     
     Aluno novoAluno;
