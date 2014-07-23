@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chamada</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="css/ratchet.min.css" rel="stylesheet">
+    <link href="css/ratchet-theme-android.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <script src="js/ratchet.min.js"></script>
+    <link rel="icon" sizes="196x196" href="img/chamada.png">
+  </head>
+  <body>
+
+    <!-- Barra de navegação -->
+    <header class="bar bar-nav">
+      <a class="icon icon-more-vertical pull-right bar-spaced" href="#menu-overflow"></a>
+      <a id="bar-atualizar" class="icon icon-refresh pull-right bar-spaced"></a>
+      <a href="#seletor-caderneta" class="pull-right bar-spaced">
+        <h1 class="title">
+          MATC84 - T01
+          <span class="icon icon-caret"></span>
+        </h1>
+      </a>
+      <img id="bar-icon" class="pull-left" alt="Chamada" src="img/chamada.png" height="24" width="24" />
+      <h1 id="bar-titulo" class="title">
+        Chamada
+      </h1>
+        <div id="seletor-caderneta" class="popover">
+          <header class="bar bar-nav">
+            <h1 class="title">Turmas</h1>
+          </header>
+          <ul class="table-view">
+            <li class="table-view-divider">Hoje</li>
+            <li class="table-view-cell">
+                <a>MATC84 - T01</a>
+            </li>
+            <li class="table-view-divider">Outros dias</li>
+            <li class="table-view-cell">
+                <a>MATC84 - T02</a>
+            </li>
+            <li class="table-view-cell">
+                <a>MATC85 - T01</a>
+            </li>
+            <li class="table-view-cell">
+                <a>MATC86 - T02</a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="menu-overflow" class="popover">
+          <ul class="table-view">
+            <li id="menu-overflow-atualizar" class="table-view-cell">
+                <a>Atualizar</a>
+            </li>
+            <li class="table-view-cell">
+                <a>Sobre</a>
+            </li>
+            <li class="table-view-cell">
+                <a>Sair</a>
+            </li>
+          </ul>
+        </div>
+    </header>
+
+    <!-- Conteúdo -->
+    <div class="content">
+      <ul id="content-aulas" class="table-view">
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 8
+              <a class="btn pull-right">Chamada</a>
+              <p>23/7 (hoje)</p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 7
+              <p>21/7 (anteontem)</p>
+              <span class="badge">3</span>
+              <span class="badge badge-positive">4</span>
+              <span class="badge badge-negative">2</span>
+          </a>
+        </li>
+        <li class="table-view-divider">Semana passada</li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 6
+              <p>16/7 (quarta)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">8</span>
+              <span class="badge badge-negative">2</span>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 5
+              <p>14/7 (segunda)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">4</span>
+              <span class="badge badge-negative">6</span>
+          </a>
+        </li>
+        <li class="table-view-divider">Semanas anteriores</li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 4
+              <p>9/7 (quarta)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">10</span>
+              <span class="badge badge-negative">0</span>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 3
+              <p>7/7 (segunda)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">9</span>
+              <span class="badge badge-negative">1</span>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 2
+              <p>2/7 (quarta)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">8</span>
+              <span class="badge badge-negative">2</span>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a href="aula.html" data-transition="slide-in">
+              Aula 1
+              <p>30/6 (segunda)</p>
+              <span class="badge">0</span>
+              <span class="badge badge-positive">7</span>
+              <span class="badge badge-negative">3</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </body>
+</html>

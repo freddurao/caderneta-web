@@ -1,0 +1,60 @@
+
+<html lang="en"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.org/ui"
+>
+    <h:head>
+        <title></title>
+        <h:outputStylesheet library="css" name="default.css"  />
+        <style type="text/css">
+			
+			 .panelGridCenter {
+			    margin: 0 auto;
+			}
+			
+			.ui-panelgrid tr,
+			.ui-panelgrid td {
+    				border: none;
+				}
+				
+				
+	</style>
+    </h:head>
+    <h:body>
+    <p:layout fullPage="true">
+          <p:layoutUnit position="north" size="75" header="Caderneta" resizable="false" closable="false" collapsible="false">
+                <h:outputText value="" />
+          </p:layoutUnit>
+         <p:layoutUnit position="south" size="50" header="DCC-UFBA" resizable="true" closable="true" collapsible="true">
+               
+         </p:layoutUnit>  
+          <p:layoutUnit position="center">
+                <h:form styleClass="loginPanelStyle">
+                           <p:growl id="msgs" showDetail="true" sticky="false" />                        
+                           <p:panelGrid columns="2">
+                           <f:facet name="header">
+                               Login 
+                           </f:facet>
+                           <h:outputText value="Login : "></h:outputText>
+                            <p:inputText id="username" value="#{loginBean.login}" required="true" requiredMessage="Digite o nome! ">
+                               <f:validateLength minimum="1" />  
+                            </p:inputText>
+                           <h:outputText value="Senha : "></h:outputText>
+                            <p:password id="password" value="#{loginBean.senha}" required="true" requiredMessage="Digite a senha!">
+                                   <f:validateLength minimum="1" />  
+                             </p:password>
+                           <f:facet name="footer">
+                           <p:commandButton value="Acessar" action="#{loginBean.autentica}" update="msgs" ajax="false"  icon="ui-icon-check" style="margin:0"></p:commandButton>
+                           </f:facet> 
+                       </p:panelGrid>
+                   </h:form>
+           </p:layoutUnit>
+        </p:layout>
+    </h:body>
+
+
+
+
+</html>
