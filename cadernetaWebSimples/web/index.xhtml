@@ -9,7 +9,7 @@
     <h:head>
         <title>Facelet Title</title>
         <link rel="stylesheet" href="Relatorio/css/index.css"/>
-       
+
 
     </h:head>
     <h:body>
@@ -29,31 +29,57 @@
                 <header>
                     <div id="cabecalho">
                         <div id="texto" border="1">
-                            <p>#{cadernetaBean.universidade}</p>
-                            <p>R00232 - Registro de Presença</p>
-                            <p>#{cadernetaBean.departamento}</p>
-                            <p>Disciplina: #{cadernetaBean.textoDisciplina} &nbsp;Período Letivo:#{cadernetaBean.periodoLetivo}&nbsp; Turma:#{cadernetaBean.turma} &nbsp; Carga Horária:#{cadernetaBean.cargaHoraria} </p>
+                            <p>
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.universidade}" />
+                                </p:inplace>
+                            </p>
+                            <p> 
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.textoRegistroPresenca}" />
+                                </p:inplace>
+                            </p>
+                            <p>
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.departamento}" />
+                                </p:inplace>
+
+                            </p>
+                            <p>Disciplina:  
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.textoDisciplina}" />
+                                </p:inplace> 
+                                Período Letivo: 
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.periodoLetivo}" />
+                                </p:inplace> 
+                                Turma: 
+                                <p:inplace editor="true">
+                                    <p:inputText value="#{cadernetaBean.turma}" />
+                                </p:inplace> 
+                                Carga Horária: #{cadernetaBean.cargaHoraria} 
+                            </p>
                         </div>
                     </div>
                 </header>
 
             </fieldset>
             <div align="center">Registro de Presença por Data e Hora</div>
-            <hr/>
+
             <section id="tabela_aula">
-                <table border ="1"  >
+                <table border ="0" style="float: right;" cellspacing="0"  >
                     <tr>
                         <th>NºAula</th>
 
-                        <ui:repeat id="naula" value="#{cadernetaBean.novaChamada.presenca}" var="a">
-                            <th> #{a.dia+1} </th>
+                        <ui:repeat id="naula" value="#{cadernetaBean.arrayNumeroDeAulas}" var="a">
+                            <th style="border:1px solid black;width: 24px; height: 20px"> #{a} </th>
 
                         </ui:repeat>
                     </tr>
                     <tr>
                         <th borde="none">Mês </th>
-                        <ui:repeat id="nmes" value="#{cadernetaBean.novaChamada.presenca}" var="a">
-                            <th>  </th>
+                        <ui:repeat id="nmes" value="#{cadernetaBean.arrayNumeroDeAulas}" var="m">
+                            <th style="border:1px solid black;width: 24px; height: 20px">  </th>
 
                         </ui:repeat>
 
@@ -61,8 +87,8 @@
 
                     <tr>
                         <th>Dia </th>
-                        <ui:repeat id="ndia" value="#{cadernetaBean.novaChamada.presenca}" var="a">
-                            <th>  </th>
+                        <ui:repeat id="ndia" value="#{cadernetaBean.arrayNumeroDeAulas}" var="d">
+                            <th style="border:1px solid black;width: 24px; height: 20px">  </th>
 
                         </ui:repeat>
 
@@ -70,21 +96,22 @@
                 </table>
             </section>
             <section id="tabela_frequencia">
-                <table border="1" >
+                <table border="0" cellspacing="0" >
                     <tr id="sem_esq">
-                        <th>Matrícula</th>
-                        <th id="nome">Nome</th>
+                        <th style="width: 72px;text-align: left">Matrícula</th>
+                        <th id="nome" style="width: 354px;text-align: left">Nome</th>
                         <th> </th>
                     </tr>
                     <ui:repeat id="al" value="#{cadernetaBean.classe.chamadas}" var="item">
 
                         <tr>
                             <td>#{item.aluno.matricula}</td>
-                            <td>#{item.aluno.nome}a</td>
+                            <td>#{item.aluno.nome}</td>
                             <td>#{item.aluno.codDisciplina}</td>
 
+
                             <ui:repeat id="presen" value="#{item.presenca}" var="p">
-                                <th><h:selectBooleanCheckbox value="#{p.presenca}" /></th>
+                                <th style="border:1px solid black;width: 25px; height: 20px"><h:selectBooleanCheckbox value="#{p.presenca}" /></th>
                             </ui:repeat>
 
                         </tr>

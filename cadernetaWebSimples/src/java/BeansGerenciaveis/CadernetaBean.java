@@ -27,22 +27,22 @@ public class CadernetaBean implements Serializable {
      * Creates a new instance of CadernetaBean
      */
     public CadernetaBean() {
-         this.classe = new Classe();
-         System.out.println("Carga/3 : "+cargaHoraria/3);
-         this.novaChamada = new Chamada(35);
-        
-        this.novoAluno = new Aluno("1231", "Jorge", 51);
-        
+        this.classe = new Classe();
+        System.out.println("Carga/3 : " + cargaHoraria / 3);
+        this.novaChamada = new Chamada(35);
+
+        this.novoAluno = new Aluno("210105066", "Jorge Fernando Silva Pereira Filho", 51);
+
         this.novaChamada.setAluno(novoAluno);
-        
-        
+
         this.classe.getChamadas().add(novaChamada);
         novaChamada = new Chamada(35);
         this.novoAluno = new Aluno();
-        
+
         //this.createDynamicColumns();
     }
-    
+
+    ArrayList<Integer> arrayNumeroDeAulas;
     Aluno novoAluno;
     String universidade = "UFBA - Universidade Federal da Bahia - Sistema Acadêmico";
     String textoRegistroPresenca = "R00232 - Registro de Presença";
@@ -50,9 +50,10 @@ public class CadernetaBean implements Serializable {
     String textoDisciplina = "MATC84 - LABORATÓRIO DE PROGRAMAÇÃO WEB";
     String periodoLetivo = "2014-1";
     String turma = "000100(P01)";
+    String registroTexto = "R00232 - Registro de Presença";
     int cargaHoraria = 51;
 
-    Classe classe; 
+    Classe classe;
     Chamada novaChamada;
 
     public void setUniversidade(String universidade) {
@@ -143,76 +144,81 @@ public class CadernetaBean implements Serializable {
     public void setNovoAluno(Aluno novoAluno) {
         this.novoAluno = novoAluno;
     }
+
     /*
-    private List<ColumnModel> columns;
-
-    public List<ColumnModel> getColumns() {
-        return columns;
-    }
-    
-    public void setColumns(List<ColumnModel> columns) {
-        this.columns = columns;
-    }
-    
-    public void updateColumns() {
-        //reset table state
-        UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
-        table.setValueExpression("sortBy", null);
-
-        //update columns
-        createDynamicColumns();
-    }
-
-    private void createDynamicColumns() {
-        
-        columns = new ArrayList<ColumnModel>();
-
-        for (Chamada colunas : classe.getChamadas()) {
-           
-            Iterator<Presenca> it = colunas.getPresenca().iterator();
-            System.out.println("Quantidade de Presenças: "+ colunas.getPresenca().size());
-                 
-            while(it.hasNext()) {
-                columns.add(new ColumnModel("Teste","Teste2" ));
-            }
-        }
-        
-        
-    }
-    */
+     private List<ColumnModel> columns;
+     public List<ColumnModel> getColumns() {
+     return columns;
+     }
+     public void setColumns(List<ColumnModel> columns) {
+     this.columns = columns;
+     }
+     public void updateColumns() {
+     //reset table state
+     UIComponent table = FacesContext.getCurrentInstance().getViewRoot().findComponent(":form:cars");
+     table.setValueExpression("sortBy", null);
+     //update columns
+     createDynamicColumns();
+     }
+     private void createDynamicColumns() {
+     columns = new ArrayList<ColumnModel>();
+     for (Chamada colunas : classe.getChamadas()) {
+     Iterator<Presenca> it = colunas.getPresenca().iterator();
+     System.out.println("Quantidade de Presenças: "+ colunas.getPresenca().size());
+     while(it.hasNext()) {
+     columns.add(new ColumnModel("Teste","Teste2" ));
+     }
+     }
+     }
+     */
     /*static public class ColumnModel implements Serializable {
+     private String header;
+     private String presente;
+     public ColumnModel(String header, String presente) {
+     this.header = header;
+     this.presente = presente;
+     }
+     public String getHeader() {
+     return header;
+     }
+     public void setHeader(String header) {
+     this.header = header;
+     }
+     public String getPresente() {
+     return presente;
+     }
+     public void setPresente(String presente) {
+     this.presente = presente;
+     }
+     public String retorno(){
+     return "teste";
+     }
+     }*/
+    public ArrayList<Integer> getArrayNumeroDeAulas() {
+        if (arrayNumeroDeAulas == null) {
+            arrayNumeroDeAulas = new ArrayList<Integer>(35);
+            for (int i = 0; i < 35; i++) {
+                
+                arrayNumeroDeAulas.add(i + 1);
 
-        private String header;
-        private String presente;
+            }
 
-        public ColumnModel(String header, String presente) {
-            this.header = header;
-            this.presente = presente;
         }
 
-        
-        public String getHeader() {
-            return header;
-        }
+        return arrayNumeroDeAulas;
+    }
 
-        public void setHeader(String header) {
-            this.header = header;
-        }
+    public void setArrayNumeroDeAulas(ArrayList<Integer> arrayNumeroDeAulas) {
+        this.arrayNumeroDeAulas = arrayNumeroDeAulas;
+    }
 
-        public String getPresente() {
-            return presente;
-        }
+    public String getRegistroTexto() {
+        return registroTexto;
+    }
 
-        public void setPresente(String presente) {
-            this.presente = presente;
-        }
-        
-        public String retorno(){
-            return "teste";
-        }
-
-        
-    }*/
+    public void setRegistroTexto(String registroTexto) {
+        this.registroTexto = registroTexto;
+    }
     
     
 
