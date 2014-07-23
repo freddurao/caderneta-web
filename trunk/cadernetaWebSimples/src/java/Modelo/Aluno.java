@@ -6,11 +6,13 @@
 
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jorgepereira
  */
-public class Aluno {
+public class Aluno implements Serializable {
     String matricula;
     String nome;
     int codDisciplina;

@@ -6,13 +6,14 @@
 
 package Modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author jorgepereira
  */
-public class Chamada {
+public class Chamada implements Serializable{
     ArrayList<Presenca> presenca;
     Aluno aluno;
 

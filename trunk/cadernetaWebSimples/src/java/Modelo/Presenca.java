@@ -6,11 +6,13 @@
 
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jorgepereira
  */
-public class Presenca {
+public class Presenca implements Serializable {
     
     public int dia;
     public int mes;
@@ -43,5 +45,15 @@ public class Presenca {
     public void setPresenca(boolean presenca) {
         this.presenca = presenca;
     }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+    
+    
     
 }
