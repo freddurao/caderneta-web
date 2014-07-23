@@ -1,0 +1,70 @@
+body{
+	color: #333333;
+	text-align: left;	
+	font-family: "Arial", "Helvetica", sans-serif;
+}
+
+#cabecalho{
+	text-align: left;
+	padding: 10px;
+	font-size: 0.8em;
+	line-height: 0.5;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	position:static;
+	height: auto;
+	width: 97%;
+}
+#imagem{
+	float:left;
+	padding: 1px;
+	margin-left: 1px;
+}
+
+#texto{
+	padding: 1px;
+}
+
+#tabela_frequencia{
+	position:relative;
+	padding: 10px;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	height: auto;
+	width: 97%;
+}
+
+p{
+	text-align: left;
+	padding: 1px;
+}
+th{
+	font-weight: bold;
+	padding: 0.3em 1em;
+	text-align: center;
+}
+td{
+	padding: 0.3em;
+}
+
+table{
+	padding: 10px;
+
+}
+
+table h2 {
+	font-size: 1.5em;
+	line-height: 0.5;
+}
+
+table p {
+	margin: 1em 0;
+	font-size: 1em;
+	line-height: 0.5;
+	max-width: 36em;
+}
+footer{
+	vertical-align:bottom;
+}
