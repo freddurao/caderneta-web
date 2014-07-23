@@ -1,0 +1,59 @@
+body{
+	color: #333333;
+	text-align: left;	
+	font-family: "Arial", "Helvetica", sans-serif;
+}
+
+#cabecalho{
+	text-align: left;
+	padding: 1px;
+	font-size: 0.8em;
+	line-height: 0.5;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	position:static;
+	height: auto;
+	width: 100%;
+}
+
+#texto{
+	padding: 1px;
+}
+
+#tabela_frequencia,#tabela_aula{
+	position:relative;
+	padding: 1px;
+	height: auto;
+	width: 100%;
+	clear:right;
+}
+p{
+	text-align: left;
+	padding: 1px;
+}
+th{
+	font-weight: bold;
+	padding: 0.3em 1em;
+	text-align: center;
+	font-size: 0.7em;
+}
+td{
+	padding: 0.3em;
+	font-size: 0.7em;
+}
+#nome{
+	width: 330px;
+}
+
+table{
+	padding: 1px;
+}
+
+
+table p {
+	margin: 1em 0;
+	font-size: 0.7em;
+	line-height: 0.5;
+	max-width: 36em;
+}
