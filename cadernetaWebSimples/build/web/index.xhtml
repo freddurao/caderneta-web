@@ -14,16 +14,7 @@
     </h:head>
     <h:body>
         <h:form id="formAluno">
-            <fieldset id="cadAluno">
-                <legend>
-                    Cadastrar Novo Aluno:
-                </legend>
-                Nome: <h:inputText value="#{cadernetaBean.novoAluno.nome}"/> <br/>
-                Matricula: <h:inputText value="#{cadernetaBean.novoAluno.matricula}" /> <br/>
-                Código da Disciplina: <h:inputText value="#{cadernetaBean.novoAluno.codDisciplina}" /> <br/>
-                <p:commandButton value="Cadastrar" action="#{cadernetaBean.addNovoAluno}" update="formAluno"/>
-
-            </fieldset>
+           
             <br/>
             <fieldset >
                 <header>
@@ -43,10 +34,10 @@
             <section id="tabela_aula">
                 <table border ="1"  >
                     <tr>
-                        <th>NºAula</th>
+                        <th style="width: 430px">NºAula</th>
 
                         <ui:repeat id="naula" value="#{cadernetaBean.novaChamada.presenca}" var="a">
-                            <th> #{a.dia+1} </th>
+                            <th style="width: 19px" > #{a.dia+1} </th>
 
                         </ui:repeat>
                     </tr>
@@ -80,7 +71,7 @@
 
                         <tr>
                             <td>#{item.aluno.matricula}</td>
-                            <td>#{item.aluno.nome}a</td>
+                            <td>#{item.aluno.nome}</td>
                             <td>#{item.aluno.codDisciplina}</td>
 
                             <ui:repeat id="presen" value="#{item.presenca}" var="p">
